@@ -25,3 +25,5 @@ frontend/dist-ssr
 
 .env
 *.backup
+
+notes.txt
