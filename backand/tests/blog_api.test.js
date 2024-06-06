@@ -38,12 +38,33 @@ test("unique identifier is named id", async () => {
   assert.strictEqual(identifierProperty, "id");
 });
 
+// test("blog can be added", async () => {
+//   const newBlog = {
+//     title: "This is a new Blog Post",
+//     author: "Bob Miller",
+//     url: "https://example.com/test",
+//     likes: 150,
+//   };
+
+//   await api
+//     .post("/api/blogs")
+//     .send(newBlog)
+//     .expect(201)
+//     .expect("Content-Type", /application\/json/);
+
+//   const blogsAtEnd = await helper.blogsInDb();
+//   assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length + 1);
+
+//   const titles = blogsAtEnd.map((blog) => blog.title);
+//   assert(titles.includes(newBlog.title));
+// });
+
 test("blog can be added", async () => {
   const newBlog = {
-    title: "Exploring the MERN Stack",
-    author: "Alice Johnson",
-    url: "https://example.com/mern-stack",
-    likes: 150,
+    title: "This is a new Blog Post",
+    author: "Bob Miller",
+    url: "https://example.com/test",
+    likes: 130,
   };
 
   await api
@@ -52,11 +73,11 @@ test("blog can be added", async () => {
     .expect(201)
     .expect("Content-Type", /application\/json/);
 
-  const blogsAtEnd = await helper.blogsInDb();
-  assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length + 1);
+  const blogAtEnd = await helper.blogsInDb();
+  assert.strictEqual(blogAtEnd.length, helper.initialBlogs.length + 1);
 
-  const titles = blogsAtEnd.map((blog) => blog.title);
-  assert(titles.includes(newBlog.title));
+  const contents = blogAtEnd.map((b) => b.title);
+  assert(contents.includes("This is a new Blog Post"));
 });
 
 test("single blog is deleted", async () => {
